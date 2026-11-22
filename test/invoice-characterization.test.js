@@ -140,7 +140,9 @@ test('rendered invoice shows checkout GST, coupon discount, and ledger total wit
   assert.match(html, /GST %<\/th><th class="r">GST Amt/);
   assert.match(html, /<td class="r">5%<\/td><td class="r">₹46\.25<\/td>/);
   assert.match(html, /<td class="r">18%<\/td><td class="r">₹166\.50<\/td>/);
-  assert.match(html, /<td>CGST \+ SGST \(Total GST\)<\/td><td class="r">₹212\.75<\/td>/);
+  assert.match(html, /<tr><td>CGST<\/td><td class="r">₹106\.38<\/td><\/tr>/);
+  assert.match(html, /<tr><td>SGST<\/td><td class="r">₹106\.37<\/td><\/tr>/);
+  assert.doesNotMatch(html, /CGST \+ SGST \(Total GST\)/);
   assert.match(html, /<td class="r" style="color:#16a34a">-₹150\.00<\/td>/);
   assert.match(html, /<td>Invoice Total<\/td><td class="r">₹2062\.75<\/td>/);
   assert.doesNotMatch(html, /Accountant Reconciliation Notice/);
